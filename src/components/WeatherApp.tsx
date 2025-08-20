@@ -55,11 +55,11 @@ const WeatherApp: React.FC = () => {
   return (
     <div 
       className="min-h-screen transition-all duration-1000 ease-in-out"
-      style={weather ? backgroundStyle : { background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
+      style={weather ? backgroundStyle : { background: 'white' }}
     >
       <div className="min-h-screen flex flex-col">
         {/* Header */}
-        <div className="bg-black/20 backdrop-blur-sm border-b border-white/20">
+        <div className="bg-gray-100 border-b border-gray-200">
           <div className="max-w-6xl mx-auto px-4 py-4">
             <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4 items-center">
               <div className="flex-1 relative">
@@ -68,14 +68,14 @@ const WeatherApp: React.FC = () => {
                   placeholder="Enter zipcode (e.g., 10001, 90210, 33101)"
                   value={zipcode}
                   onChange={(e) => setZipcode(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                  className="w-full px-4 py-3 pl-12 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70" size={20} />
+                <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               </div>
               <button
                 type="submit"
                 disabled={loading || !zipcode.trim()}
-                className="px-6 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-lg text-white font-semibold transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 border border-blue-600 rounded-lg text-white font-semibold transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Search size={20} />
                 {loading ? 'Searching...' : 'Get Weather'}
@@ -187,26 +187,23 @@ const WeatherApp: React.FC = () => {
 
             {!weather && !error && !loading && (
               <div className="text-center">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-12 border border-white/30 max-w-2xl mx-auto">
-                  <h2 className="text-3xl font-bold text-white mb-4">Welcome to Weather Insights</h2>
-                  <p className="text-lg text-white/80 mb-6">
+                <div className="bg-gray-50 rounded-lg p-12 border border-gray-200 max-w-2xl mx-auto shadow-sm">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Weather Insights</h2>
+                  <p className="text-lg text-gray-700 mb-6">
                     Get real-time weather data for any location with beautiful visuals and uplifting insights.
                   </p>
-                  <p className="text-white/70">
+                  <p className="text-gray-600">
                     Enter any valid zipcode to get started!
                   </p>
-                  <div className="mt-4 text-sm text-white/60">
-                    <p>Powered by OpenWeatherMap API</p>
-                  </div>
                 </div>
               </div>
             )}
 
             {loading && (
               <div className="text-center">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-12 border border-white/30 max-w-2xl mx-auto">
-                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-                  <p className="text-xl text-white">Fetching real-time weather data...</p>
+                <div className="bg-gray-50 rounded-lg p-12 border border-gray-200 max-w-2xl mx-auto shadow-sm">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                  <p className="text-xl text-gray-900">Fetching real-time weather data...</p>
                 </div>
               </div>
             )}
